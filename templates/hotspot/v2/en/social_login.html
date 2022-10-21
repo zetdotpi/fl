@@ -1,0 +1,21 @@
+{% extends 'hotspot/v2/base.html' %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='hotspotv2/css/social_login.css') }}">
+{% endblock %}
+{% block header_pre %}
+       <a href="{{ url_for('social_login_page', lang='ru', identity=hotspot.identity,  mac=mac, target=target, preview=preview) }}" class="lang_switch">RU</a>
+{% endblock %}
+{% block content %}
+<div class="pure-u-sm-0 pure-u-1-5"></div>
+<div class="pure-u-sm-1 pure-u-3-5">
+    <div class="socialnetwork rks_buttons buttoncenter" id="soc_div" style="max-width: 15em;">
+        <p> Please login using <br> one of the social networks </p> 
+        <a class="pure-u-1 pure-button button-vk soc_button_fix" href="https://oauth.vk.com/authorize?client_id=5409164&redirect_uri=https://login.example.com/social/vk&display=mobile&response_type=code&scope=email,wall&state={{state_value}}"> Vk <br> </a>
+        <a class="pure-u-1 pure-button button-ok soc_button_fix" href="https://connect.ok.ru/oauth/authorize?client_id=512000051806&redirect_uri=https://login.example.com/social/ok&response_type=code&scope=GET_EMAIL&state={{state_value}}"> OK <br> </a>
+        <a class="pure-u-1 pure-button button-fb soc_button_fix" href="https://www.facebook.com/dialog/oauth?client_id=717471438676265&redirect_uri=http://login.example.com/social/fb&response_type=code&scope=public_profile,email&state={{state_value}}"> Facebook <br> </a>
+        <a class="pure-u-1 pure-button button-ig soc_button_fix" href="https://api.instagram.com/oauth/authorize/?client_id=06a3cbc3cea14f98a425a62f1fefa0b3&redirect_uri=https://api.example.com/integrations/instagram?state={{state_value}}&response_type=code"> Instagram </a>
+        <a href="#" class="pure-u-1 pure-button button-xsmall soc_button_fix"> skip </a>
+    </div>
+</div>
+<div class="pure-u-sm-0 pure-u-1-5"></div>
+{% endblock %}

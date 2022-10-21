@@ -1,0 +1,66 @@
+{% extends 'hotspot/v2/base.html' %}
+{% block title %}Example SMS login. Input your access code{% endblock %}
+{% block header_pre %}
+       <a href="{{ url_for('sms_code_form', lang='ru', identity=hotspot.identity,  mac=mac, target=target, preview=preview) }}" class="lang_switch">RU</a>
+{% endblock %}
+{% block content %}
+    <div class="pure-u-sm-0 pure-u-1-5"></div>
+    <div class="pure-u-sm-1 pure-u-3-5">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+        <aside>
+            <p>{{ message }}</p>
+        </aside>
+
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+<div id="wrapper">
+    <div id="inner_wrapper">
+    	<div id="smsconfirmation">
+            <form action="{{ url_for('sms_code_form', identity=hotspot.identity, mac=mac, target=target) if preview==False else '#' }}" method="post">
+            {% if code_sent == 'True' %}
+                <p>SMS code has been sent</p>
+            {% endif %}
+                <p> Please enter SMS code </p>
+            	<input type="tel" class="inputbox" pattern="[0-9]{4}" autocomplete="off" name="code" size="20" maxlength="25" autofocus>
+            	<input type="submit" id="sendsms"  class="pure-u-1 pure-button button-sms buttoncenter" value="Send SMS code">
+            </form>
+            <a href="{{ url_for('sms_request_form', identity=hotspot.identity, mac=mac, target=target) if preview==False else '#'}}" 
+                id="neprishelkod_nadpis" 
+                style="color: blue; cursor: pointer;">Haven't received sms? Send again.</a>
+    	</div>
+    </div>
+</div>
+{% endblock %}
+{% block postbody %}
+    {% if code_sent == 'True' %}
+    <script>
+        var seconds_till_repeat = 180;
+
+        var sms_form_link = document.getElementById("neprishelkod_nadpis");
+        var orig_link = sms_form_link.href;
+        var orig_text = sms_form_link.text;
+        sms_form_link.href = "javascript: void(0);";
+        sms_form_link.text += " (" + seconds_till_repeat + ")";
+
+        
+        var counter=setInterval(timer, 1000); //1000 will  run it every 1 second
+
+        function timer()
+        {
+            seconds_till_repeat -= 1;
+            if (seconds_till_repeat <= 0)
+            {
+                clearInterval(counter);
+                sms_form_link.text = orig_text;
+                sms_form_link.href = orig_link;
+                return;
+            }
+            //Do code for showing the number of seconds here
+            sms_form_link.text = orig_text + " (" + seconds_till_repeat + ")";
+        }
+    </script>
+    {% endif %}
+{% endblock %}

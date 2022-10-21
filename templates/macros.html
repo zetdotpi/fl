@@ -1,0 +1,15 @@
+{% macro nav_li(endpoint, name, icon) -%}
+    {% if request.endpoint == endpoint -%}
+    	{% if icon %}
+        <li class="active {% if class %}{{ class }}{% endif %}"><a href="{{ url_for(endpoint, **kwargs) }}"><i class="fa {{ icon }}"></i> <span>{{ name }}</span></a></li>
+    	{% else %}
+    	<li class="active {% if class %}{{ class }}{% endif %}"><a href="{{ url_for(endpoint, **kwargs) }}">{{ name }}</a></li>
+    	{% endif %}
+    {%- else -%}
+    	{% if icon %}
+        <li {% if class %}class="{{ class }}"{% endif %}><a href="{{ url_for(endpoint, **kwargs) }}"><i class="fa {{ icon }}"></i> <span>{{ name }}</span></a></li>
+    	{% else %}
+    	<li{% if class %} class="{{ class }}"{% endif %}><a href="{{ url_for(endpoint, **kwargs) }}">{{ name }}</a></li>
+    	{% endif %}
+    {%- endif %}
+{% endmacro %}

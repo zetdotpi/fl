@@ -1,0 +1,61 @@
+{% extends 'hotspot/v2/base.html' %}
+{% block title %}Example call login{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='hotspotv2/css/sms_form.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='hotspot/css/intlTelInput.css') }}">
+    <script src="{{ url_for('static', filename='hotspot/js/jquery-1.12.3.min.js') }}"></script>
+{% endblock %}
+
+{% block header_pre %}
+       <a href="{{ url_for('call_submit', lang='ru', identity=hotspot.identity,  mac=mac, target=target, preview=preview) }}" class="lang_switch">RU</a>
+{% endblock %}
+
+{% block content %}
+    <div class="pure-u-sm-0 pure-u-1-5"></div>
+    <div class="pure-u-sm-1 pure-u-3-5">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+        <aside>
+            <p>{{ message }}</p>
+        </aside>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <div id="wrapper">
+        <div id="inner_wrapper">
+            <p style="max-width: 25em; margin: auto; margin-top: 2em">Your phone number is +{{ phone }}</p>
+            <p>
+                <a href="{{ url_for('call_phone_form', lang='ru', identity=hotspot.identity, mac=mac, target=target) }}">Wrong number?</a>
+            </p>
+            <a class="pure-u-1 pure-button button-sms buttoncenter" href="tel:+78001006788">Please call<br>+78001006788</a>
+            <p style="max-width: 25em; margin: auto; margin-top: 2em">to authenticate.<br>
+            <strong>This call is free.</strong><br>
+            After that return to this page and you will gain access to internet for 90 days.</p>
+        </div>
+    </div>
+    </div>
+    <div class="pure-u-sm-0 pure-u-1-5"></div> 
+{% endblock %}
+{% block postbody %}
+<script>
+    let url = new URL(document.location.href)
+    let mac = url.searchParams.get('mac')
+    let identity = url.searchParams.get('identity')
+    let target = url.searchParams.get('target')
+    function checkLogin() {
+        var res1 = $.get(
+            '/check',
+            {mac: mac},
+            (data, status, wtf) => {
+                window.location = '/login/success/?mac=' + mac + '&identity=' + identity + '&target=' + target
+            }
+        )
+    }
+
+    window.onload = function() {
+        setInterval(checkLogin, 3000)
+    }
+</script>
+{% endblock %}

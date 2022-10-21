@@ -1,0 +1,9 @@
+.header {
+    font-family: "Roboto",sans-serif;
+    text-align: center;
+    letter-spacing: 0.05em;
+}
+.content {
+    margin-left: auto;
+    margin-right: auto;
+}

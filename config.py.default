@@ -1,0 +1,94 @@
+import os
+import platform
+
+DEBUG = True
+SECRET_KEY = 'place your secret key here'
+
+KEY_PATH = '/path/to/id_dsa'
+MIKROTIK_FILES_PATH = os.path.join(os.getcwd(), 'mikrotik_assets')
+
+if DEBUG:
+	WERKZEUG_DEBUG_PIN = 'off'
+
+
+if DEBUG:
+	DB_HOST = 'ip or hostname'
+	DB_NAME = 'dbname'
+	DB_USERNAME = 'username'
+	DB_PASSWORD = 'password'
+else:
+	DB_HOST = 'localhost'
+	DB_NAME = 'dbname'
+	DB_USERNAME = 'username'
+	DB_PASSWORD = 'password'
+
+# FLASK-MAIL CONFIG
+
+MAIL_SERVER = 'smtp.example.com'
+MAIL_PORT = 465
+#MAIL_USE_TLS : default False
+MAIL_USE_SSL = True
+MAIL_USERNAME = 'mail@example.com'
+MAIL_PASSWORD = 'password'
+
+# for VK image uploads
+VK_GROUP_ID = '000000'
+VK_ALBUM_ID = '000000'
+VK_ACCESS_TOKEN = '000000'
+
+API_GROUP_NAME = 'Example'
+API_GROUP_PERMISSIONS = 'api,ssh,ftp,read,write'
+API_USER_NAME = 'Example'
+API_USER_PASSWORD = 'api password value'
+
+
+SMSAERO_LOGIN = 'mail@example.com'
+SMSAERO_PASSWORD_HASH = 'password hash string'
+
+IQSMS_LOGIN = '000000'
+IQSMS_PASSWORD = '000000'
+
+# which sms gateway should we use? Variants are:
+# smsaero
+# iqsms
+# prostorsms
+SMS_GATEWAY = 'prostorsms'
+
+PROSTORSMS_LOGIN = '000000'
+PROSTORSMS_PASSWORD = '000000'
+
+## VPN IP POOL START ADDRESS AND SUBNET STRING
+
+# previous addresses are reserved for server and testing purposes
+VPN_NET = '10.0.0.0/16'
+VPN_POOL_MIN = '10.0.1.10'
+VPN_POOL_MIN_INTEGER = 167772426
+VPN_POOL_SUBNET = '255.255.0.0'
+
+RADIUS_ADDR = '111.111.111.111'
+RADIUS_SECRET = 'radius secret string'
+
+APPLETRAP_ADDR = 'trap for apple devices IP address'
+APPLETRAP_TIMEOUT = 10  # in seconds
+
+DNS_ADDR = '10.0.0.1'  # use internal address, because DNS server shouldn't be visible from outside
+
+# wkhtmlotpdf is a cli utility used by pdfkit to convert html to pdf
+# it should be configured to work on a headless server
+# here are two links that can help get it working
+# https://gist.github.com/paulsturgess/cfe1a59c7c03f1504c879d45787699f5
+# https://gist.github.com/AndreasFurster/ebe3f163d6d47be43b72b35b18d8b5b6
+WKHTMLTOPDF_PATH = '/usr/local/bin/wkhtmltopdf'
+
+IG_CLIENT_ID = ''
+IG_CLIENT_SECRET = ''
+
+EXAMPLE_SRV_IP = '111.111.111.111'
+
+RABBITMQ_USER = 'user'
+RABBITMQ_PASSWORD = 'password'
+
+RABBITMQ_CONSUMER_USER = 'consumer'
+RABBITMQ_CONSUMER_PASSWORD = 'password'
+
+RABBITMQ_VHOST = 'vhost name'

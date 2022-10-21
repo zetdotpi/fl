@@ -1,0 +1,28 @@
+{% extends 'hotspot/v2/base.html' %}
+{% block title %}Example SMS login{% endblock %}
+{% block header %}
+{% endblock %}
+{% block content %}
+<div class="pure-u-sm-0 pure-u-1-5"></div>
+<div class="pure-u-sm-1 pure-u-3-5">
+<div id="wrap">
+	<div id="inner_wrap">
+		<div id="placeholder" style="margin-top: 5em;">
+		{% if hotspot.has_logo() == True %}
+			<img id="placeimage" src="{{ url_for('static', filename = hotspot.logo_static_path()) }}" alt="{{ hotspot.appearance.title or 'Example!' }}">
+		{% else %}
+			<p style="font-family: 'Fira Sans'">{{ hotspot.appearance.title or 'Example!' }}</p>
+			{% if hotspot.appearance.text != None %}
+			<p>{{ hotspot.appearance.text }}</p>
+			{% endif %}
+		{% endif %}
+		</div>
+		<p id="nadpis">Authentication is unavailable<br>at the moment.</p>
+	</div>
+</div>
+<div class="pure-u-sm-0 pure-u-1-5"></div>
+{% endblock %}
+
+
+
+

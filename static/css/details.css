@@ -1,0 +1,26 @@
+.timelabels {
+	font-size: 15px;
+}
+
+.table-counter {
+    counter-reset: rowNumber;
+}
+
+.table-counter tr {
+    counter-increment: rowNumber;
+}
+
+.table-counter tr td:first-child::before {
+    content: counter(rowNumber);
+    min-width: 1em;
+    margin-right: 0.5em;
+}
+
+.panel-title
+{
+	font-size: 1em;
+}
+
+th {
+	font-size: 0.9em;
+}

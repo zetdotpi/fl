@@ -1,0 +1,28 @@
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+color: #9FA8DA;  /*Sets the text hover color on navbar*/
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active >   
+ a:hover, .navbar-default .navbar-nav > .active > a:focus {
+color: #9FA8DA; /*BACKGROUND color for active*/
+background: black;
+
+}
+
+  .navbar-default {
+    background: black;
+    border-color: #030033;    
+}
+
+ .nav > li > a:hover,
+ .nav > li > a:focus {
+    text-decoration: none;
+  }
+
+  .navbar-default .navbar-nav > li > a {
+   color: white; /*Change active text color here*/
+    }
+
+.navbar-nav > li > a {padding-top:13px !important; padding-bottom:5px !important;}
+.navbar {min-height:32px !important}

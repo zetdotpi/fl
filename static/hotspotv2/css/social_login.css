@@ -1,0 +1,282 @@
+body
+{
+  /* background: url("Elegant_Background-9tiny.jpg") no-repeat center center fixed; */
+  background-color: #ffffff;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  font-size: 100%;
+  -ms-text-size-adjust: 100%; 
+  -webkit-text-size-adjust: 100%; 
+  overflow: hidden;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+
+@font-face {
+  font-family: 'Fira Sans', sans-serif;
+  src: url('../fonts/FiraSans-Light.woff2') format('woff2'),
+       url('../fonts/FiraSans-Light.woff') format('woff'),
+       url('../fonts/FiraSans-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+#waiting_gif {
+  width: 15em;
+  text-align: center;
+}
+
+
+#wrapper {
+  overflow: hidden;
+  height: 100%;
+}
+
+#visible_wrapper {
+
+  height: 20em;  
+  width: 19em;
+  margin: 0 auto;
+  text-align: center;
+
+}
+
+.soc_button_fix {
+  position: inline-block;
+  width: 100% !important;
+}
+
+#getsms {
+  border-style: 1px black;
+  
+  
+}
+
+p {
+  
+  font-weight: 300;	
+  color: #0E0E0E;
+  font-size: 1em;
+  line-height: 0.5em;
+  text-align: center;
+  margin-top: 0.7em;
+  line-height: 1.3;
+}
+
+
+#zakon_nadpis {
+  color: #aaaaaa;
+  font-size: 0.8em;
+  margin-top: 1em;
+
+}
+
+#neprishelkod_nadpis
+{
+  color: blue;
+  cursor: pointer;
+  margin-top: 1.3em;
+
+
+}
+
+.socialnetworks_buttons {
+  text-align: center;
+  max-width: 1em;
+
+
+}
+
+.innerdiv {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* hides out of screen div */ 
+  -pie-background:  rgba(200, 54, 54, 0.5); /* IE 6/7/8 */
+  behavior: url(PIE.htc);   /* IE 6/7/8 */
+  display: block;
+}
+
+
+
+#placeimage {
+ display: block;
+ margin-left: auto;
+ margin-right: auto;
+ margin-top: 2em;
+ position: relative;
+ width: 100%;
+
+}
+
+#smslogin_div
+{
+	margin-top: 10em;
+}
+
+.inputbox {
+  font-size: 1em;
+  display: block;
+  margin: 0 auto;
+  margin-top: 2em;
+  height: 2.5em;
+  border-radius: 0.4em;
+  width: 12em;
+}
+
+
+.buttoncenter {
+  display: block;
+  margin: 0 auto;
+  margin-top: 2em;
+}
+
+
+
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
+.visible {
+  display: block;
+  visibility: visible;
+}
+
+
+
+.soc_button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 0.6em 2em;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 1em;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+  margin: 0 auto;
+  margin-top: 1.5em;
+  border-radius: 0.4em;
+}
+
+.pure-button {
+  color: white;
+  margin-top: 1.2em;
+  width: 12em;
+
+  font-weight: 300;
+
+}
+
+#socialnetworks {
+  margin: 0 auto;
+  width: 10%;
+}
+
+.button-sms
+{
+  margin-top: 2em;
+}
+
+.switch
+{
+  text-align: center;
+}
+
+
+.active 
+{
+  opacity: 0.9;
+}
+
+
+.button-sms { background-color: #ffffff;
+  border: 1px solid black;  
+  color: black;
+}
+
+.button-vk {background-color: #2B587A; opacity: .9;}
+.button-ok {background-color: #ED812B; opacity: .9;}
+.button-fb {background-color: #3D5B99; opacity: .9;}
+.button-tw {background-color: #2DAAE1; opacity: .9;}
+.button-ig {
+  background: #e4405f;
+  /*background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);*/
+}
+
+@media (min-height: 410){
+
+  #placeimage {
+ display: block;
+ margin-left: auto;
+ margin-right: auto;
+ margin-top: 2em;
+ position: relative;
+ width: 5em;
+
+  }
+}
+
+@media (max-height: 410px){
+
+#placeimage {
+ display: block;
+ margin-left: auto;
+ margin-right: auto;
+ margin-top: 0.1em;
+ position: relative;
+
+  }
+
+}
+
+
+}
+@media (min-width:480px) { /* smartphones, Android phones, landscape iPhone */ 
+
+
+
+
+
+}
+@media (min-width:600px) { /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+  .socialnetworks_buttons {
+    max-width: 80%; 
+  }
+}
+@media (min-width:801px) { /* tablet, landscape iPad, lo-res laptops ands desktops */ 
+  .socialnetworks_buttons {
+    max-width: 80%; 
+  }
+}
+@media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ 
+  .socialnetworks_buttons {
+    max-width: 80%; 
+  }
+}
+@media (min-width:1281px) { /* hi-res laptops and desktops */ 
+  .socialnetworks_buttons {
+    max-width: 80%; 
+  }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+

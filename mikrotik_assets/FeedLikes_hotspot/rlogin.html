@@ -1,0 +1,17 @@
+$(if http-status == 302)Hotspot login required$(endif)
+$(if http-header == "X-FL-MAC")$(mac)$(endif)
+$(if http-header == "Location")http://login.example.com/?identity=$(server-name)&mac=$(mac)&target=$(link-orig)$(endif)
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Redirecting to login page</title>
+	<meta http-equiv="refresh" content="0; url=http://login.example.com/?identity=$(server-name)&mac=$(mac)&target=$(link-orig)">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="expires" content="-1">
+</head>
+<body>
+login.html
+</body>
+</html>

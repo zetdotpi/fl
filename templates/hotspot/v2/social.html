@@ -1,0 +1,28 @@
+<html>
+<head>
+    <script type="text/javascript" src="static/js/jquery-2.2.0.min.js"></script>
+    <link rel="stylesheet" href="static/css/animate.min.css">
+    <link rel="stylesheet" href="static/css/pure-min.css">
+  
+    <link rel="stylesheet" type="text/css" href="static/css/social_form.css">
+        <script src="static/js/social_form.js"></script>
+
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+{#
+    <div id="placeholder">
+        <p style="margin-top: 10em;"> placeholder Реклама С Цитрусом</p>
+    </div>
+#}
+    <div id="wrapper">
+         <div id="visible_wrapper">
+              <div class="socialnetwork rks_buttons buttoncenter" id="soc_div" style="max-width: 15em;">
+                <p> Авторизируйтесь через одну <br> из социальных сетей </p> 
+                <a class="pure-u-1 pure-button button-vk soc_button_fix" href="#"> Вконтакте <br> </a>
+                <a class="pure-u-1 pure-button button-fb soc_button_fix" href="{{ url_for('https://www.facebook.com/dialog/oauth', _external=True, client_id='1560442087548153', redirect_uri='https://lk.example.com/social/fb', response_type='code', scope='public_profile,email,user_about_me', state=state_value) }}"> Facebook </a>          
+            </div>
+     </div> <!--#visible_wrapper-->
+  </div> <!--#wrapper-->
+</body>
+</html>

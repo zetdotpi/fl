@@ -1,0 +1,82 @@
+#placeimage {
+	  display: block;
+  	margin-left: auto;
+  	margin-right: auto;
+  	margin-top: 6em;
+  	position: relative;
+  	max-width: 12em;
+    
+}
+
+@font-face {
+  font-family: 'Fira Sans';
+  src: url('../fonts/FiraSans-Light.woff2') format('woff2'),
+       url('../fonts/FiraSans-Light.woff') format('woff'),
+       url('../fonts/FiraSans-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body
+{
+	/* background: url("Elegant_Background-9tiny.jpg") no-repeat center center fixed; */
+	background-color: #ffffff;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+	font-size: 100%;
+	  -ms-text-size-adjust: 100%; 
+	  -webkit-text-size-adjust: 100%; 
+	overflow: hidden;
+	font-family: 'FiraSans-Light', 'Fira Sans' , Helvetica, 'Comic Sans Ms';
+
+}
+
+#nadpis 
+{
+	margin: 0 auto;
+	font-family: 'FiraSans-Light';
+	margin-top: 2em;
+	
+
+	line-height: 1.3;
+	font-size: 1em;
+	text-align: center;
+	
+}
+
+
+#tryonemoretime {
+	margin-top: 2em;
+	font-family: 'FiraSans-Light';
+	text-decoration: none;
+	color: blue;
+	display: block;
+	text-align: center;
+}
+
+#baby {
+	
+	width: 4em;
+	margin-top: 7em;
+}
+
+
+#inner_wrap {
+	overflow: hidden;
+	height: 100%;
+	text-align: center;
+	float: left;
+	position: relative;
+	left: -50%;
+}
+
+#wrap {
+	float: left;
+	position: relative;
+	left: 50%;
+}
+

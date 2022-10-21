@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="{{ url_for('static', filename='hotspotv2/js/jquery-2.2.0.min.js') }}"></script>			
+		<link rel="stylesheet" href="{{ url_for('static', filename='hotspotv2/css/pure-min.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='hotspotv2/css/animate.min.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='hotspotv2/css/custom.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='hotspotv2/css/code_form.css') }}">
+		{% block head %}{% endblock %}
+	</head>
+	<body>
+		<div class="header">
+        {% block header_pre %}{% endblock %}
+		{# LOGO OR TITLE #}
+		{% if hotspot.has_logo() == True %}
+        	<img id="placeimage" src="{{ url_for('static', filename = hotspot.logo_static_path()) }}" alt="{{ hotspot.appearance.title or 'Example!' }}">
+        {% else %}
+        	<p>{{ hotspot.appearance.title or 'Example!' }}</p>
+        	{% if hotspot.appearance.text != None %}
+        		<p>{{ hotspot.appearance.text }}</p>
+        	{% endif %}
+        {% endif %}
+        {# ############# #}
+
+        {# FLASHED MESSAGES #}
+        {% with messages = get_flashed_messages() %}
+	    {% if messages %}
+	    {% for message in messages %}
+	    <aside>
+	        <p>{{ message }}</p>
+	    </aside>
+	    {% endfor %}
+	    {% endif %}
+	    {% endwith %}    
+        {# ################ #}
+        
+		{% block header %}{% endblock %}
+		</div>
+		<div class="pure-g">
+		{% block content %}{% endblock %}
+		</div>
+	</body>
+	{% block postbody %}{% endblock %}
+</html>

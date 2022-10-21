@@ -1,0 +1,60 @@
+{% extends 'hotspot/v2/base.html' %}
+{% block title %}Example call login{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='hotspotv2/css/sms_form.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='hotspot/css/intlTelInput.css') }}">
+    <script src="{{ url_for('static', filename='hotspot/js/jquery-1.12.3.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='hotspot/js/intlTelInput.min.js') }}"></script>
+{% endblock %}
+
+{% block header_pre %}
+       <a href="{{ url_for('call_phone_form', lang='ru', identity=hotspot.identity,  mac=mac, target=target, preview=preview) }}" class="lang_switch">RU</a>
+{% endblock %}
+
+{% block content %}
+    <div class="pure-u-sm-0 pure-u-1-5"></div>
+    <div class="pure-u-sm-1 pure-u-3-5">
+    <div id="wrapper">
+        <div id="inner_wrapper">
+            <div id="getsms" class="innerdiv">
+                <form id="phoneForm" action="{{ url_for('call_phone_form', identity=hotspot.identity, mac=mac, target=target) if preview==False else '#' }}" method="POST">
+                    <p> In order to get Wi-Fi access please <br> please confirm your phone number. </p>
+                    <input type="tel" name="phone" id="phone" hidden>
+                    <input id="phone_in" name="phone_in" type="tel" class="inputbox" autofocus>
+                    <button type="submit" id="getsmsbutton" class="pure-u-1 pure-button button-sms buttoncenter" 
+                    onclick="var pval = $('#phone_in').intlTelInput('getNumber'); $('#phone').val(pval); document.forms[0].submit()">Continue</button>
+                </form>
+                <p id="agreement"> By pressing "Continue" button, <br> you are agreeing with <br> <a href="{{ url_for('agreement') }}">User agreement</a> <br>
+                According to decree of Russian Federation
+                from <br> 31.07.2014 №758 and 12.08.2014 №801 </p>            
+            </div>
+        </div>
+    </div> 
+{% endblock %}
+{% block postbody %}
+<script>
+    $('#phone_in').intlTelInput(
+        {
+            utilsScript: "{{ url_for('static', filename='hotspot/js/utils.js') }}",
+            initialCountry: "ru",
+            autoPlaceholder: true,
+            separateDialCode: true,
+            preferredCountries: ['ru', 'ua', 'by', 'kz', 'am', 'ge', 'tj', 'tm', 'uz']
+        }
+    );
+
+    var submit = false;
+    $('#phoneForm').submit(function(e) {
+        if (!submit) {
+            submit = true;
+            $('#phoneForm').hide()
+        }
+        else {
+            e.preventDefault();
+        }
+        
+    });
+
+</script>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'hotspot/v2/base.html' %}
+{% block title %}Example SMS login{% endblock %}
+
+{% block header %}
+<link rel="stylesheet" href="{{ url_for('static', filename='hotspotv2/css/sms_form.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='hotspot/css/intlTelInput.css') }}">
+<script src="{{ url_for('static', filename='hotspot/js/jquery-1.12.3.min.js') }}"></script>
+<script src="{{ url_for('static', filename='hotspot/js/intlTelInput.min.js') }}"></script>
+{% endblock %}
+
+{% block header_pre %}
+       <a href="{{ url_for('sms_request_form', lang='en', identity=hotspot.identity,  mac=mac, target=target, preview=preview) }}" class="lang_switch">EN</a>
+{% endblock %}
+
+{% block content %}
+<div class="pure-u-sm-0 pure-u-1-5"></div>
+<div class="pure-u-sm-1 pure-u-3-5">
+    <form action="{{ url_for('sms_request_form', identity=hotspot.identity, mac=mac, target=target) if not preview else '#' }}" method="POST">
+    <p>Чтобы получить Wi-Fi<br>пожалуйста пройдите<br>через SMS верификацию.</p>
+        <input type="tel" name="phone" id="phone" hidden>
+        <p>
+            <input id="phone_in" name="phone_in" type="tel" class="inputbox" autofocus>
+        </p>
+        <button type="submit" id="getsmsbutton" class="pure-u-1 pure-button button-sms buttoncenter" 
+        onclick="var pval = $('#phone_in').intlTelInput('getNumber'); $('#phone').val(pval); document.forms[0].submit()"> Получить SMS код </button>
+    </form>
+    <p>
+        <a id="estkod_nadpis" href="{{ url_for('sms_code_form', identity=hotspot.identity, mac=mac, target=target) if not preview else '#'}}"> У меня уже есть код </a>
+    </p>
+    <p id="agreement"> Нажимая кнопку "Получить SMS код",<br>вы принимаете условия<br><a href="{{ url_for('agreement') }}"> пользовательского соглашения</a><br>Согласно Постановлению РФ от<br> 31.07.2014 №758 и от 12.08.2014 №801</p>
+</div>
+{% endblock %}
+{% block postbody %}
+<script>
+    $('#phone_in').intlTelInput(
+    {
+        utilsScript: "{{ url_for('static', filename='hotspot/js/utils.js') }}",
+        initialCountry: "ru",
+        autoPlaceholder: true,
+        separateDialCode: true,
+        preferredCountries: ['ru', 'ua', 'by', 'kz', 'am', 'ge', 'tj', 'tm', 'uz']
+    }
+    );
+</script>
+{% endblock %}
